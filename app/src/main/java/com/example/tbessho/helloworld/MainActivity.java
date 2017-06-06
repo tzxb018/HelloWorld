@@ -2,11 +2,13 @@ package com.example.tbessho.helloworld;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
     public static final  String EXTRA_MESSAGE = "com.example.helloworld.MESSAGE";
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -24,6 +26,26 @@ public class MainActivity extends FragmentActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemsSelected(MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.A){
+            //write
+            return true;
+        }
+        if (id == R.id.B){
+            //write
+            return true;
+        }
+        return true;
+    }
+
 
     /*private void dispatchTakePictureIntent(){
         Intent takePictureIntent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
