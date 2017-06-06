@@ -19,6 +19,15 @@
         <activity
             android:name=".DisplayMessageActivity"
             android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".A_Activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".B_Activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+
+
     </application>
 
 </manifest>

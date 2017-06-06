@@ -33,14 +33,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemsSelected(MenuItem item){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if (id == R.id.A){
             //write
+            Intent intent = new Intent(this, A_Activity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.B){
             //write
+            Intent intent2 = new Intent(this, B_Activity.class);
+            startActivity(intent2);
             return true;
         }
         return true;

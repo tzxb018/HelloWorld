@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/A"
-        android:title="Item A" />
-    <item android:title="Item B"
+        android:title="GPS" />
+    <item android:title="Hardware"
         android:id = "@+id/B"/>
 </menu>
