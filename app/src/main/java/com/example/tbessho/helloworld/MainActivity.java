@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.A){
             //write
-            Intent intent = new Intent(this, A_Activity.class);
+            Intent intent = new Intent(this, GPS_Activity.class);
             startActivity(intent);
             return true;
         }
