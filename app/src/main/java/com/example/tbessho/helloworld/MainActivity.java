@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent2);
             return true;
         }
+
+        if (id == R.id.C){
+            Intent intent3 = new Intent( this, Camera_Activity .class);
+            startActivity(intent3);
+            return true;
+        }
         return true;
     }
 
