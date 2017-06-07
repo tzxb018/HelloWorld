@@ -7,12 +7,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,14 +28,14 @@ public class GPS_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gps_activity);
 
-        button = (Button) findViewById(R.id.btnGPS);
+        //button = (Button) findViewById(R.id.btnGPS);
         textView = (TextView) findViewById(R.id.txtLoc);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                textView.append("\n " + location.getLatitude() + " " + location.getLongitude());
+                textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
             }
 
             @Override
@@ -57,35 +54,46 @@ public class GPS_Activity extends Activity {
                 startActivity(intent);
             }
         };
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES .M){
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.INTERNET}, 10);
-                return;
-            } else {
-                configureButton();
-            }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
-    }
+        locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+        }
 
-    @Override
+
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
+        switch (requestCode) {
             case 10:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    configureButton();
-                return;
+                configureButton();
+                break;
+            default:
+                break;
         }
     }
 
-    private void configureButton() {
+    void configureButton() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET} , 10);
+            }
+            return;
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick (View view){
                 locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
             }
         });
 
-    }
+    }*/
 }
 
 
