@@ -9,8 +9,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by tbessho on 6/7/2017.
@@ -46,8 +47,9 @@ public class Camera_Activity extends Activity{
         if (!folder.exists()){
             folder.mkdir();
         }
-
-        File image_file = new File(folder, "cam_image.jpg");
+        //creating a media file name with the date
+        String timeStamp  = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File image_file = new File(folder, "IMG_" + timeStamp + ".jpg");
         return image_file;
     }
 
