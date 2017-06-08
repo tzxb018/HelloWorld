@@ -57,20 +57,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-    /*private void dispatchTakePictureIntent(){
-        Intent takePictureIntent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-    protected void onActivityResult (int requestCode, int resultCode, Intent data){
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mImageView.setImageBitmap(imageBitmap);
-        }
-    }*/
-
 }
